@@ -8,7 +8,8 @@ const AfricasTalking = require('africastalking')(options);
 const voice = AfricasTalking.VOICE
 const sms = AfricasTalking.SMS
 
-const voiceServiceCall = (req,res) => {
+const voiceServiceCall = {}
+voiceServiceCall.post = (req,res) => {
     const {
         isActive,
         sessionId,

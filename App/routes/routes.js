@@ -1,7 +1,7 @@
-const {ATVoice} 
+const {voiceServiceCall} = require('../AT/AfricasTalking')
 
 const appRouter = (app) => {
-    app.post("/voicecall",ATVoice.post)
+    app.post("/voicecall",voiceServiceCall.post)
 }
 
 module.exports = appRouter;
