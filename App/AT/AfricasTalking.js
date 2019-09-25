@@ -9,19 +9,31 @@ const voice = AfricasTalking.VOICE
 const sms = AfricasTalking.SMS
 
 const voiceServiceCall = (req,res) => {
+    const {
+        isActive,
+        sessionId,
+        direction,
+        callerNumber,
+        destinationNumber,
+        dtmfDigits,
+        durationInSeconds,
+        currencyCode,
+        amount
+    } = req.body
+
     const options = {
-        callFrom:"",
-        callTo:""
+        callFrom: callerNumber,
+        callTo: destinationNumber
     }
     
     // INITIATE A PHONECALL
-    voice.call(options).then(response => {
-        res.send(200)
-    }).catch(error => {
-        res.send(error)
-    })
-
-    
+    voice.call(options)
+        .dial()
+        .then(response => {
+            res.send(200)
+        }).catch(error => {
+            res.send(error)
+        })    
 }
 
 const smsServiceCall = () => {
